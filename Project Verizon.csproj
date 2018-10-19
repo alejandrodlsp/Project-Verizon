@@ -303,7 +303,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\mouseManager.cs" />
+    <Compile Include="Assets\Scripts\buildManager.cs" />
+    <Compile Include="Assets\Scripts\cameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
