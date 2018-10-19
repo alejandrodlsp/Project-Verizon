@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class cameraManager : MonoBehaviour {
 
-	public Camera theCamera;
+	private Camera theCamera;
 	private Transform cameraRig;
 	private Vector3 lastMousePosition;
 
+	[Header("Orbital")]
 	[SerializeField] private float orbitSensitivity = 1f;
-	[SerializeField] private float scrollSensitivity = 1f;
 	[SerializeField] private bool infiniteOrbit = false;
+	[Header("Zoom")]
+	[SerializeField] private float maxZoomDistance;
+	[SerializeField] private float minZoomDistance;
+	[SerializeField] private float scrollSensitivity = 1f;
+	[Header("Pan")]
+	[SerializeField] private float panSpeed = 0.1f;
+
 	void Start () {
 		if (theCamera == null)	// CHECK FOR CAMERA
 			theCamera = GetComponent<Camera>();
@@ -26,16 +33,32 @@ public class cameraManager : MonoBehaviour {
 	{
 		OrbitCamera();
 		ZoomCamera();
+		PanCamera();
 	}
 	
 
 	void ZoomCamera()
 	{
-		float delta = Input.GetAxis("Mouse ScrollWheel");   // SCROLL DIFFERENCE AXIS
+		float _delta = -Input.GetAxis("Mouse ScrollWheel");   // SCROLL DIFFERENCE AXIS
 
 		//Move camera backwards or foward based on valu of delta
-		Vector3 _changeOfPosition = theCamera.transform.forward / scrollSensitivity * delta;
-		theCamera.transform.Translate(_changeOfPosition);
+		Vector3 _posChange = theCamera.transform.localPosition  / scrollSensitivity * _delta;
+		Vector3 _pos = theCamera.transform.localPosition + _posChange;
+
+		_pos = _pos.normalized * Mathf.Clamp(_pos.magnitude, minZoomDistance, maxZoomDistance);	// CLAMP ZOOM DIASTANCE
+		theCamera.transform.localPosition = _pos;
+	}
+	 
+	void PanCamera()
+	{
+		Vector3 _input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+
+		//Move camera
+		Vector3 _posChange = _input * panSpeed;
+		_posChange = Quaternion.Euler(0, theCamera.transform.rotation.eulerAngles.y, 0) * _posChange;
+
+		Vector3 _pos = cameraRig.transform.localPosition + _posChange;
+		cameraRig.transform.position = _pos;
 	}
 
 	void OrbitCamera () {

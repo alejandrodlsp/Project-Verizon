@@ -304,7 +304,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\buildManager.cs" />
+    <Compile Include="Assets\Scripts\buildPart.cs" />
+    <Compile Include="Assets\Scripts\buildToolbar.cs" />
     <Compile Include="Assets\Scripts\cameraManager.cs" />
+    <Compile Include="Assets\thruster.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />

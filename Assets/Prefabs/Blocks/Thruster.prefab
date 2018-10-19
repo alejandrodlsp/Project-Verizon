@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4573675311440570}
+  - component: {fileID: 114368261531965476}
   m_Layer: 0
   m_Name: Thruster
   m_TagString: Untagged
@@ -144,3 +145,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114368261531965476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1454702075579012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63df09a73520d1a46a0bf7c235d2a905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrusterForce: 10

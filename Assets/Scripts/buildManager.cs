@@ -6,7 +6,7 @@ public class buildManager : MonoBehaviour {
 
 	[SerializeField] private Camera theCamera;
 
-	[SerializeField] private GameObject spawnPrefab;
+	[SerializeField] public GameObject spawnPrefab;
 
 	[SerializeField] private LayerMask snapPointLayerMask;
 	[SerializeField] private LayerMask raycastLayerMask;
