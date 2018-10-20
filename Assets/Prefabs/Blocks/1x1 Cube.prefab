@@ -800,9 +800,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1990889072023662}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 114892713575878250}
+        m_MethodName: closeDialogWindow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -929,7 +929,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogWindow: {fileID: 1990889072023662}
   objectNameText: {fileID: 114925662338876890}
-  openMenu: 0
 --- !u!114 &114925662338876890
 MonoBehaviour:
   m_ObjectHideFlags: 1

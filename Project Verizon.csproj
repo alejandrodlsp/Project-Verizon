@@ -285,6 +285,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Project Verizon.Plugins.csproj">
+      <Project>{1E10B2DB-AC82-C708-FCE7-57094FFEDA26}</Project>
+      <Name>Project Verizon.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.StandardEvents.csproj">
       <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
       <Name>UnityEditor.StandardEvents</Name>
@@ -303,18 +307,40 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\cubeSettings.cs" />
-    <Compile Include="Assets\Scripts\buildManager.cs" />
-    <Compile Include="Assets\Scripts\buildPart.cs" />
-    <Compile Include="Assets\Scripts\buildToolbar.cs" />
-    <Compile Include="Assets\Scripts\cameraFollow.cs" />
-    <Compile Include="Assets\Scripts\cameraManager.cs" />
-    <Compile Include="Assets\Scripts\mouseManager.cs" />
-    <Compile Include="Assets\Scripts\objectSettings.cs" />
-    <Compile Include="Assets\Scripts\thrusterSettings.cs" />
-    <Compile Include="Assets\thruster.cs" />
+    <Compile Include="Assets\Scripts\Building\buildManager.cs" />
+    <Compile Include="Assets\Scripts\Building\buildPart.cs" />
+    <Compile Include="Assets\Scripts\camera\cameraFollow.cs" />
+    <Compile Include="Assets\Scripts\camera\cameraManager.cs" />
+    <Compile Include="Assets\Scripts\Objects\cube\cubeSettings.cs" />
+    <Compile Include="Assets\Scripts\Objects\objectSettings.cs" />
+    <Compile Include="Assets\Scripts\Objects\thruster\thruster.cs" />
+    <Compile Include="Assets\Scripts\Objects\thruster\thrusterSettings.cs" />
+    <Compile Include="Assets\Scripts\UI\buildToolbar.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\Standard Assets\Effects\ImageEffects\Readme.txt" />
+    <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+    <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\DO_NOT_WORK_IN_VR.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\DO_NOT_WORK_IN_VR.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

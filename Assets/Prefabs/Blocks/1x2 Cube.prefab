@@ -1220,9 +1220,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1211485872723394}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 114985511310954684}
+        m_MethodName: closeDialogWindow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1327,7 +1327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogWindow: {fileID: 1211485872723394}
   objectNameText: {fileID: 114791326336768928}
-  openMenu: 0
 --- !u!222 &222053901330155024
 CanvasRenderer:
   m_ObjectHideFlags: 1
