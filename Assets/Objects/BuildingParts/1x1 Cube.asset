@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e538b358c2283cc4bb4f11657bd8eee7, type: 3}
   m_Name: 1x1 Cube
   m_EditorClassIdentifier: 
-  partName: 1x1 Cube
+  partName: 1x1 CUBE
   partPrefab: {fileID: 1814022883230566, guid: 3d72239cda88b8842b6568d7fcebea23, type: 2}

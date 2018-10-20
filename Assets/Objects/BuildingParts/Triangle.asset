@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e538b358c2283cc4bb4f11657bd8eee7, type: 3}
   m_Name: Triangle
   m_EditorClassIdentifier: 
-  partName: Triangle
+  partName: TRIANGLE
   partPrefab: {fileID: 1510836628343280, guid: c2cf03187b52878409d26055bf182345, type: 2}

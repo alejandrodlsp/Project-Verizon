@@ -303,10 +303,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\cubeSettings.cs" />
     <Compile Include="Assets\Scripts\buildManager.cs" />
     <Compile Include="Assets\Scripts\buildPart.cs" />
     <Compile Include="Assets\Scripts\buildToolbar.cs" />
+    <Compile Include="Assets\Scripts\cameraFollow.cs" />
     <Compile Include="Assets\Scripts\cameraManager.cs" />
+    <Compile Include="Assets\Scripts\mouseManager.cs" />
+    <Compile Include="Assets\Scripts\objectSettings.cs" />
+    <Compile Include="Assets\Scripts\thrusterSettings.cs" />
     <Compile Include="Assets\thruster.cs" />
   </ItemGroup>
   <ItemGroup>

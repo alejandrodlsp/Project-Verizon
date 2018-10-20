@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e538b358c2283cc4bb4f11657bd8eee7, type: 3}
   m_Name: Thruster
   m_EditorClassIdentifier: 
-  partName: Thruster
+  partName: THRUSTER
   partPrefab: {fileID: 1454702075579012, guid: 1b60f34121cf68f4faf648528737b480, type: 2}

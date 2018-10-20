@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class thruster : MonoBehaviour {
+public class thruster : thrusterSettings{
 
 	Rigidbody theRb;
 	[SerializeField] private float thrusterForce = 10f;
+
 	void Start () {
+		keyCode = defaultKeyCode;	
+
 		theRb = this.transform.root.GetComponent<Rigidbody>();
 	}
 	
@@ -14,15 +17,11 @@ public class thruster : MonoBehaviour {
 		if (theRb.isKinematic)
 			return;
 
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(keyCode))
 		{
 			Vector3 _theForce =  - this.transform.forward * thrusterForce;
 			theRb.AddForceAtPosition(_theForce , this.transform.position, ForceMode.Force);
 		}
 	}
 
-	private void Update()
-	{
-		
-	}
 }

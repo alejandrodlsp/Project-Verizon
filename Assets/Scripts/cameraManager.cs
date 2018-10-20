@@ -17,6 +17,7 @@ public class cameraManager : MonoBehaviour {
 	[SerializeField] private float scrollSensitivity = 1f;
 	[Header("Pan")]
 	[SerializeField] private float panSpeed = 0.1f;
+	[SerializeField] private bool panCamera = false;
 
 	void Start () {
 		if (theCamera == null)	// CHECK FOR CAMERA
@@ -29,13 +30,14 @@ public class cameraManager : MonoBehaviour {
 		cameraRig = theCamera.transform.parent;	// GET CAMERA RIG FROM MAIN CAM PARENT
 	}
 
-	private void Update()
+	private void LateUpdate()
 	{
 		OrbitCamera();
 		ZoomCamera();
-		PanCamera();
+		if (panCamera)
+			PanCamera();		
 	}
-	
+
 
 	void ZoomCamera()
 	{
