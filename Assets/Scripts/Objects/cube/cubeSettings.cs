@@ -37,6 +37,7 @@ public class cubeSettings : objectSettings
 
 	override public void closeDialogWindow()
 	{
+		buildManager.instance.clearPopupsCallback -= closeDialogWindow;
 		buildManager.instance.buildingAvailable = true;
 		dialogWindow.SetActive(false);
 	}

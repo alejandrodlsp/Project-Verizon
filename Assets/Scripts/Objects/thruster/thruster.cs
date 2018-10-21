@@ -5,7 +5,6 @@ using UnityEngine;
 public class thruster : thrusterSettings{
 
 	Rigidbody theRb;
-	[SerializeField] private float thrusterForce = 10f;
 	[SerializeField] private ParticleSystem[] thrusterEffect;
 
 	void Start () {

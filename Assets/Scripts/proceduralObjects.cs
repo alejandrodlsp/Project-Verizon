@@ -52,7 +52,6 @@ public class proceduralObjects : MonoBehaviour {
 	void createChunk(Vector3 position) {
 		if (!chunkMap.ContainsKey(position))	// If no chunk is already at that position
 		{
-			Debug.Log("b");
 			GameObject _chunkParent = (GameObject)Instantiate(chunkParent, position, Quaternion.identity);
 			chunkMap.Add(position, _chunkParent);
 			Vector3[] spawnedModels = new Vector3[maxChunkCapacity];

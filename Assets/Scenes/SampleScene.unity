@@ -10596,7 +10596,31 @@ Prefab:
     - target: {fileID: 54008078935714848, guid: 437b4ee653c25024ba2105ac74c0a68c,
         type: 2}
       propertyPath: m_Constraints
-      value: 112
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548945104881938, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448738283495600, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953047954011792, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823041485783238, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231724963719502, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462576227823394, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}

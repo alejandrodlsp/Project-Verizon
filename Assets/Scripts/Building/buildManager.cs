@@ -33,10 +33,32 @@ public class buildManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetMouseButtonDown(0) && buildingAvailable)
+		if (Input.GetMouseButtonDown(0) && buildingAvailable && !Input.GetKey(KeyCode.LeftShift))
 			CheckLeftClick();
+		if (Input.GetMouseButtonDown(0) && buildingAvailable && Input.GetKey(KeyCode.LeftShift))
+			CheckLeftShiftClick();
 		if (Input.GetMouseButtonDown(1) && buildingAvailable)
 			CheckRightClick();
+	}
+
+	void CheckLeftShiftClick()
+	{
+		Debug.Log(1);
+		// IF LEFT MOUSE BUTTON WAS PRESSED		
+		// IS THE MOUSE OVER A BLOCK?
+		Collider _cl = doRaycast(); // CAST RAYCAST
+		if (_cl != null)    // IF SOMETHING WAS HIT
+		{
+			int _maskForHitObject = 1 << _cl.gameObject.layer; // MASKED VALUE FOR CLICKED LAYER		(00000000001 << 3rd Layer == 00000001000)			  // COMPARE BITWISE IF LAYER CLICKED IS SNAP POINT LAYER MASK  (00000001000 & 00110001000 > 0)
+			if ((_maskForHitObject & snapPointLayerMask) > 0) // IF WHAT WE HIT IS NOT A IN THE SNAP POINT LAYER
+			{
+				GameObject _base = findBaseShipPart(_cl);
+				_base.gameObject.transform.parent.GetComponent<Collider>().enabled = true;
+				_base.GetComponent<objectSettings>().closeDialogWindow();
+				Destroy(_base);
+			}
+		}
+
 	}
 
 	void CheckRightClick()	// CHECKS LEFT CLICK FOR OBJECT SETTINGS

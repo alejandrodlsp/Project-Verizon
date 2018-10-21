@@ -11,6 +11,7 @@ public class thrusterSettings : objectSettings {
 
 
 	[Header("ObjectDialog")]
+	[SerializeField] protected float thrusterForce = 10f;
 	[SerializeField] private GameObject dialogWindow;
 	[SerializeField] private Text objectNameText;
 
@@ -26,7 +27,15 @@ public class thrusterSettings : objectSettings {
 
 	private void Start()
 	{
+		thrusterForceSlider.value = thrusterForce;
+		thrusterForceSlider.maxValue = thrusterForce;
 		buildManager.instance.clearPopupsCallback += closeDialogWindow;	// SUBSCRIBE TO CLEAR DIALOG DELEGATE
+	}
+
+	public void onSliderChange()
+	{
+		thrusterForce = thrusterForceSlider.value;
+		thrusterFoceText.text = thrusterForce.ToString();
 	}
 
 	void Update()
@@ -51,6 +60,7 @@ public class thrusterSettings : objectSettings {
 
 	override public void closeDialogWindow()
 	{
+		buildManager.instance.clearPopupsCallback -= closeDialogWindow;
 		buildManager.instance.buildingAvailable = true;
 		dialogWindow.SetActive(false);
 		keyBinding = false;
