@@ -11,7 +11,7 @@ public class thrusterSettings : objectSettings {
 
 
 	[Header("ObjectDialog")]
-	[SerializeField] protected float thrusterForce = 10f;
+	[SerializeField] protected float thrusterForce;
 	[SerializeField] private GameObject dialogWindow;
 	[SerializeField] private Text objectNameText;
 
@@ -24,11 +24,12 @@ public class thrusterSettings : objectSettings {
 	[SerializeField] private Text thrusterFoceText;
 
 	private bool keyBinding = false;
+	protected bool toggleMode = false;
 
 	private void Start()
 	{
-		thrusterForceSlider.value = thrusterForce;
 		thrusterForceSlider.maxValue = thrusterForce;
+		thrusterForceSlider.value = thrusterForce;
 		buildManager.instance.clearPopupsCallback += closeDialogWindow;	// SUBSCRIBE TO CLEAR DIALOG DELEGATE
 	}
 
@@ -66,9 +67,16 @@ public class thrusterSettings : objectSettings {
 		keyBinding = false;
 	}
 
-	override public void removeObject()
-	{
+	public void remove() {
+		GameObject _parent = transform.parent.transform.gameObject;
+		_parent.GetComponent<Collider>().enabled = true;
+		closeDialogWindow();
+		Destroy(this.gameObject);
+	}
 
+	public void toggleToggleMode()
+	{
+		toggleMode = !toggleMode;
 	}
 
 	void binding()

@@ -6,10 +6,11 @@ public class thruster : thrusterSettings{
 
 	Rigidbody theRb;
 	[SerializeField] private ParticleSystem[] thrusterEffect;
+	protected bool toggled = false;
 
 	void Start () {
-		keyCode = defaultKeyCode;	
-
+		keyCode = defaultKeyCode;
+		toggled = false;
 		theRb = this.transform.root.GetComponent<Rigidbody>();
 	}
 	
@@ -20,13 +21,26 @@ public class thruster : thrusterSettings{
 			return;
 		}
 
-		if (Input.GetKey(keyCode))
-		{
-			setParticles(true);
-			Vector3 _theForce =  - this.transform.forward * thrusterForce;
-			theRb.AddForceAtPosition(_theForce , this.transform.position, ForceMode.Force);
+		if (!toggleMode) {    // If not on toggled mode
+			if (Input.GetKey(keyCode))
+			{
+				setParticles(true);
+				Vector3 _theForce = -this.transform.forward * thrusterForce;
+				theRb.AddForceAtPosition(_theForce, this.transform.position, ForceMode.Force);
+			}
 		}
-		else
+		else { // IF IN TOGGLE MODE
+			if (Input.GetKeyDown(keyCode))
+				toggled = !toggled;
+			if (toggled)
+			{
+				setParticles(true);
+				Vector3 _theForce = -this.transform.forward * thrusterForce;
+				theRb.AddForceAtPosition(_theForce, this.transform.position, ForceMode.Force);
+			}
+		}
+
+		if((!toggleMode && !Input.GetKey(keyCode)) || (toggleMode && !toggled))
 		{
 			setParticles(false);
 		}

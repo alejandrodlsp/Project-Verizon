@@ -179,6 +179,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &209876149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 209876150}
+  - component: {fileID: 209876151}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &209876150
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209876149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 525628865}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &209876151
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209876149}
+  m_CullTransparentMesh: 0
 --- !u!1 &277605397
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +273,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 078d3c5c611ff164996d97bc601daa61, type: 2}
   - {fileID: 11400000, guid: 43f729ac536d20e45988aa4e5850f5b9, type: 2}
   - {fileID: 11400000, guid: 1ed420c6a4c9b2343bc4fa8328761dbd, type: 2}
+  - {fileID: 11400000, guid: 0da243419eadb7f499b58aa6a4b70c96, type: 2}
 --- !u!114 &277605400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,6 +610,7 @@ RectTransform:
   - {fileID: 490493999}
   - {fileID: 992174503}
   - {fileID: 459586065}
+  - {fileID: 209876150}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10547,7 +10590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4895269172610444, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.518
       objectReference: {fileID: 0}
     - target: {fileID: 4895269172610444, guid: 437b4ee653c25024ba2105ac74c0a68c, type: 2}
       propertyPath: m_LocalRotation.x

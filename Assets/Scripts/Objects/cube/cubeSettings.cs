@@ -22,11 +22,6 @@ public class cubeSettings : objectSettings
 			closeDialogWindow();
 	}
 
-	override public void removeObject()
-	{
-
-	}
-
 	override public void openDialog()
 	{
 		closeDialogWindow();   // Close all existing windows

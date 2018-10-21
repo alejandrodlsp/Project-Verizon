@@ -325,6 +325,7 @@
     <Compile Include="Assets\Standard Assets\Effects\TonemappingColorGrading\TonemappingColorGrading.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Materials\Space\Space Dust.shader" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\Common.cginc" />
@@ -353,8 +354,6 @@
     <None Include="Assets\Standard Assets\Effects\TonemappingColorGrading\Resources\HistogramRender.shader" />
     <None Include="Assets\Standard Assets\Effects\TonemappingColorGrading\Resources\TonemappingColorGrading.cginc" />
     <None Include="Assets\Standard Assets\Effects\TonemappingColorGrading\Resources\TonemappingColorGrading.shader" />
-    <None Include="Assets\__IMPORTS__\Nebula Galaxy\Materials&amp;Shaders\Space Dust.shader" />
-    <None Include="Assets\__IMPORTS__\Nebula Galaxy\README.txt" />
     <None Include="Assets\__IMPORTS__\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\__IMPORTS__\Standard Assets\Effects\ImageEffects\Readme.txt" />
     <None Include="Assets\__IMPORTS__\Standard Assets\Effects\Projectors\Guidelines.txt" />
