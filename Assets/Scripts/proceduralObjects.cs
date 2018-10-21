@@ -9,12 +9,14 @@ public class proceduralObjects : MonoBehaviour {
 	[SerializeField] private GameObject[] models;   // SPAWNABLE GAME OBJECTS
 	[SerializeField] float modelMinimumOffset; // MINIMUM DISTANCE FROM MODELS 
 	[SerializeField] float chunkUpdateRate;	// Rate to check if a new chunk is needed
-	[SerializeField] float chunkCleanerRate;	// Rate to check all chunks for cleaning
+	[SerializeField] float chunkCleanerRate;    // Rate to check all chunks for cleaning
+	[SerializeField] float maximumModelSize;
+	[SerializeField] float minimumModelSize;
 
 	[Header("Chunks")]
 	[SerializeField] private GameObject chunkParent; // CHUNK PARENT PREFAB
 	private Dictionary<Vector3, GameObject> chunkMap = new Dictionary<Vector3, GameObject>();  // LOADED CHUNKS
-	[SerializeField] private float chunkSize;	// CHUNK SIZE IN WORLD UNITS (X,Y,Z are shared)
+	[SerializeField] private int chunkSize;	// CHUNK SIZE IN WORLD UNITS (X,Y,Z are shared)
 	[SerializeField] private float chunkOffset; // Distance between chunks
 	[SerializeField] private int maxChunkCapacity;
 	[SerializeField] private int minChunkCapacity;
@@ -25,8 +27,9 @@ public class proceduralObjects : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		createChunkCompound(chunkLoaderParent.position);
-		//StartCoroutine("chunkCleaner");
+		
+		StartCoroutine("chunkUpdate");
+		StartCoroutine("chunkCleaner");
 	}
 
 	void createChunkCompound(Vector3 _pos)
@@ -37,9 +40,9 @@ public class proceduralObjects : MonoBehaviour {
 			{
 				for (int _chunkZ = -1; _chunkZ < chunkCompoundSize-1; _chunkZ++)
 				{
-					float x = (_chunkX * chunkSize * 2) + (_chunkX < 0?-chunkOffset:chunkOffset) + _pos.x;
-					float y = (_chunkY * chunkSize * 2) + (_chunkY < 0 ? -chunkOffset : chunkOffset) + _pos.y;
-					float z = (_chunkZ * chunkSize * 2) + (_chunkZ < 0 ? -chunkOffset : chunkOffset) + _pos.z;
+					float x = _pos.x + (_chunkX * (chunkSize + chunkOffset));
+					float y = _pos.y + (_chunkY * (chunkSize + chunkOffset));
+					float z = _pos.z + (_chunkZ * (chunkSize + chunkOffset));
 
 					createChunk(new Vector3(x,y,z));
 				}
@@ -47,19 +50,20 @@ public class proceduralObjects : MonoBehaviour {
 		}
 	}
 	void createChunk(Vector3 position) {
-		//if (chunkMap.ContainsKey(position) == false)	// If no chunk is already at that position
-		//{
+		if (!chunkMap.ContainsKey(position))	// If no chunk is already at that position
+		{
+			Debug.Log("b");
 			GameObject _chunkParent = (GameObject)Instantiate(chunkParent, position, Quaternion.identity);
-			//chunkMap.Add(position, _chunkParent);
+			chunkMap.Add(position, _chunkParent);
 			Vector3[] spawnedModels = new Vector3[maxChunkCapacity];
 			for (int _model = 0; _model < Random.Range(minChunkCapacity, maxChunkCapacity); _model++)
 			{
 				while (true)
 				{
 					bool rm = false;
-					float _x = Random.Range(-(chunkSize / 2), (chunkSize / 2));
-					float _y = Random.Range(-(chunkSize / 2), (chunkSize / 2)); ;
-					float _z = Random.Range(-(chunkSize / 2), (chunkSize / 2)); ;
+					float _x = Random.Range(-(chunkSize / 2), (chunkSize / 2)) + _chunkParent.transform.position.x;
+					float _y = Random.Range(-(chunkSize / 2), (chunkSize / 2)) + _chunkParent.transform.position.y;
+					float _z = Random.Range(-(chunkSize / 2), (chunkSize / 2)) + _chunkParent.transform.position.z;
 					Vector3 _modelPosition = new Vector3(_x, _y, _z);
 					foreach (Vector3 _sm in spawnedModels)
 					{
@@ -72,35 +76,46 @@ public class proceduralObjects : MonoBehaviour {
 					{
 						GameObject _m = (GameObject)Instantiate(models[Random.Range(0, models.Length)], _modelPosition, Quaternion.identity);
 						_m.transform.SetParent(_chunkParent.transform);
+						float scale = Random.Range(minimumModelSize, maximumModelSize);
+						_m.transform.localScale = new Vector3(scale,scale,scale);
 						break;
 					}
 				}
 			}
-		//}
+		}
 	}
 
 	IEnumerator chunkUpdate()
 	{
 		while (true)
 		{
-			bool _build = true;
-			if (chunkMap.Count > 0)
+			int xPos = roundToChunkSize((int)chunkLoaderParent.transform.position.x);
+			int yPos = roundToChunkSize((int)chunkLoaderParent.transform.position.y);
+			int zPos = roundToChunkSize((int)chunkLoaderParent.transform.position.z);
+
+			for (int x = xPos - chunkSize; x <= xPos + chunkSize; x+= chunkSize)
 			{
-				foreach (Vector3 _lChunks in chunkMap.Keys)
+				for (int y = yPos - chunkSize; y <= yPos + chunkSize; y += chunkSize)
 				{
-					if (Vector3.Distance(_lChunks, chunkLoaderParent.position) < chunkSize + chunkOffset)
+					for (int z = zPos - chunkSize; z <= zPos + chunkSize; z += chunkSize)
 					{
-						_build = false;
+						new Vector3(x, y, z);
+						createChunk(new Vector3(x,y,z));
 					}
 				}
 			}
 			
 
-			yield return new WaitForSeconds(chunkCleanerRate);
+			yield return new WaitForSeconds(chunkUpdateRate);
 		}
 	}
 
-	/*IEnumerator chunkCleaner()
+	public int roundToChunkSize(int value)
+	{
+		return chunkSize * ((value + chunkSize -1) / chunkSize);
+	}
+
+	IEnumerator chunkCleaner()
 	{
 		while (true)
 		{
@@ -115,5 +130,5 @@ public class proceduralObjects : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(chunkCleanerRate);
 		}
-	}*/
+	}
 }
